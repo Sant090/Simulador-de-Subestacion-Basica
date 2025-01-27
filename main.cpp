@@ -113,8 +113,8 @@ int main() {
 
                 for (auto it = sensores.begin(); it != sensores.end(); ) {
                     if ((*it)->getEtiqueta() == sensorEtiqueta) {
-                        delete *it; // Liberar memoria
-                        it = sensores.erase(it); // Eliminar de la lista
+                        delete *it;
+                        it = sensores.erase(it);
                         
                     } else {
                         ++it;
