@@ -28,7 +28,7 @@ Sensor::Sensor(string nombre, int etiqueta, int c):Dispositivo(nombre, etiqueta)
 
 int Sensor::mostrarVoltaje()
 {
-    voltaje = 1.0 + static_cast<int>(rand() % 400) / 9;
+    voltaje = 20 + rand() % 9;
     return voltaje;
 }
 
