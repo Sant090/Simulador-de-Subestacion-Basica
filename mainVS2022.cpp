@@ -5,7 +5,6 @@
 using namespace std;
 
 
-
 void mostrarMenu()
 {
     string opciones[6] = { "Registrar Sensor de Voltaje","Registrar Controlador","Asociar Sensor a Controlador","Mostrar Estado del Sistema","Eliminar Sensor","Salir" };
@@ -63,7 +62,6 @@ private:
 public:
 
     Sensor(string nombre, int etiqueta, int voltaje);
-    void leerDato();
     int mostrarVoltaje();
     void mostrarInformacion() override;
     ~Sensor();
@@ -76,7 +74,7 @@ Sensor::Sensor(string nombre, int etiqueta, int c) :Dispositivo(nombre, etiqueta
 
 int Sensor::mostrarVoltaje()
 {
-    voltaje = 1.0 + static_cast<int>(rand() % 400) / 9;
+    voltaje = 20 + rand() % 9;
     return voltaje;
 }
 
@@ -84,7 +82,7 @@ int Sensor::mostrarVoltaje()
 void Sensor::mostrarInformacion() {
 
     mostrarVoltaje();
-    cout << "Sensor: " << getNombre() << " \t| Etiqueta: " << getEtiqueta() << " \t| Voltaje: " << voltaje << "V" << endl;
+    cout << "Sensor: " << getNombre() << " \t| Etiqueta: " << getEtiqueta() << " \t| Voltaje: " << voltaje << "kV" << endl;
 }
 
 
