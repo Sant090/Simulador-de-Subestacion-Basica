@@ -17,8 +17,8 @@ class Dispositivo
 
         Dispositivo(string nombre,int etiqueta);
         virtual void mostrarInformacion()=0;
-        virtual int getEtiqueta();
-        virtual string getNombre();
+        virtual int getEtiqueta()const;
+        virtual string getNombre()const;
         virtual ~Dispositivo()=default;
 };
 
@@ -28,12 +28,12 @@ Dispositivo::Dispositivo(string b, int a)
     nombre = b;
 }
 
-int Dispositivo::getEtiqueta()
+int Dispositivo::getEtiqueta() const
 {
     return etiqueta;
 }
 
-string Dispositivo::getNombre()
+string Dispositivo::getNombre() const
 {
     return nombre;
 }
