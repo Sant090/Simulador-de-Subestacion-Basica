@@ -7,19 +7,19 @@ using namespace std;
 
 int main() {
 
-    vector<Sensor*> sensores; 
-    vector<Controlador*> controladores; 
+    vector<Sensor*> sensores;
+    vector<Controlador*> controladores;
 
     int opcion;
-    cout<<"*************************************************\n***********Bienvenido a la SubEstacion***********\n*******************Las Flores********************\n*************************************************";
+    cout << "*************************************************\n***********Bienvenido a la SubEstacion***********\n*********************Bacata**********************\n*************************************************";
 
 
     do {
-        cout<<endl;
+        cout << endl;
         mostrarMenu();
         cin >> opcion;
 
-        switch (opcion){
+        switch (opcion) {
 
         case 1: {
 
@@ -32,19 +32,20 @@ int main() {
             cin >> etiqueta;
 
             bool etiquetaDuplicada = false;
-                for (Sensor* s : sensores) {
-                    if (s->getEtiqueta() == etiqueta) {
-                        etiquetaDuplicada = true;
-                        break;
-                    }
+            for (Sensor* s : sensores) {
+                if (s->getEtiqueta() == etiqueta) {
+                    etiquetaDuplicada = true;
+                    break;
                 }
+            }
 
-                if (etiquetaDuplicada) {
-                    cout << "\nError: Ya existe un sensor con la etiqueta " << etiqueta << "." << endl;
-                } else {
-                    sensores.push_back(new Sensor(nombre, etiqueta, 0));
-                    cout << "\nSensor de voltaje registrado correctamente." << endl;
-                }
+            if (etiquetaDuplicada) {
+                cout << "\nError: Ya existe un sensor con la etiqueta " << etiqueta << "." << endl;
+            }
+            else {
+                sensores.push_back(new Sensor(nombre, etiqueta, 0));
+                cout << "\nSensor de voltaje registrado correctamente." << endl;
+            }
             break;
         }
         case 2: {
@@ -86,7 +87,8 @@ int main() {
             if (sensor && controlador) {
                 controlador->makSensor(sensor);
                 cout << "\nSensor de voltaje asociado correctamente." << endl;
-            } else {
+            }
+            else {
                 cout << "\nSensor o controlador no encontrado." << endl;
             }
             break;
@@ -106,20 +108,21 @@ int main() {
             int sensorEtiqueta;
             cout << "\nIntroduce la etiqueta del sensor de voltaje a eliminar: ";
             cin >> sensorEtiqueta;
-            
+
             for (Controlador* c : controladores) {
                 c->desasociarSensor(sensorEtiqueta);
             }
 
-                for (auto it = sensores.begin(); it != sensores.end(); ) {
-                    if ((*it)->getEtiqueta() == sensorEtiqueta) {
-                        delete *it;
-                        it = sensores.erase(it);
-                        
-                    } else {
-                        ++it;
-                    }
+            for (auto it = sensores.begin(); it != sensores.end(); ) {
+                if ((*it)->getEtiqueta() == sensorEtiqueta) {
+                    delete* it;
+                    it = sensores.erase(it);
+
                 }
+                else {
+                    ++it;
+                }
+            }
 
             cout << "\nSensor de voltaje eliminado correctamente." << endl;
 
@@ -138,13 +141,15 @@ int main() {
     } while (opcion != 6);
 
 
+    for (Controlador* c : controladores) {
+        delete c;
+    }
+
     for (Sensor* s : sensores) {
         delete s;
     }
 
-    for (Controlador* c : controladores) {
-        delete c;
-    }
+
 
     return 0;
 }
