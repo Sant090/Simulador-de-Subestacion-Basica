@@ -31,10 +31,7 @@ Controlador::Controlador(string nombre, int etiqueta):Dispositivo(nombre,etiquet
 
 Controlador::~Controlador()
 {
-    for(Sensor* sensor:sensores)
-    {
-        delete sensor;
-    }
+    sensores.clear();
 }
 
 
